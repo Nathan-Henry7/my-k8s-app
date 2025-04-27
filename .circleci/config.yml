@@ -17,7 +17,7 @@ jobs:
           name: Push Docker Image
           command: |
             docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-            docker push dancegep/my-k8s-app:latest
+            docker push nathanhenry7/my-k8s-app:latest
   deploy:
     docker:
       - image: python:3.8
