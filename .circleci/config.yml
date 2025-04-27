@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t dancegep/my-k8s-app:latest .
+            docker build -t nathanhenry7/my-k8s-app:latest .
       - run:
           name: Push Docker Image
           command: |
@@ -33,3 +33,11 @@ jobs:
           name: Deploy to Kubernetes
           command: |
             kubectl set image deployment/my-k8s-deployment my-container=dancegep/my-k8s-app:latest
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
