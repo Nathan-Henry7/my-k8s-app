@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t dancegep/my-k8s-app:dev .
+            docker build -t nathanhenry7/my-k8s-app:dev .
       - run:
           name: Push Docker Image
           command: |
