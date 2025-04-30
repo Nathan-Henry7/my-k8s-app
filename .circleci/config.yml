@@ -12,12 +12,12 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t nathanhenry7/my-k8s-app:latest .
+            docker build -t dancegep/my-k8s-app:latest .
       - run:
           name: Push Docker Image
           command: |
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push nathanhenry7/my-k8s-app:latest
+            docker push dancegep/my-k8s-app:latest
   deploy:
     docker:
       - image: python:3.8
@@ -32,12 +32,4 @@ jobs:
       - run:
           name: Deploy to Kubernetes
           command: |
-            kubectl set image deployment/my-k8s-deployment my-container=nathanhenry7/my-k8s-app:latest
-workflows:
-  version: 2
-  build_and_deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+            kubectl set image deployment/my-k8s-deployment my-container=dancegep/my-k8s-app:latest
